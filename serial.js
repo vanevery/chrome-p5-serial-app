@@ -35,26 +35,36 @@ var onDisconnect = function(result) {
   }
 };
 
-var setOnReadCallback = function(callback) {
-	onReadCallback = callback;
-	chrome.serial.onReceive.addListener(onReceiveCallback);
-};
+//var setOnReadCallback = function(callback) {
+//	onReadCallback = callback;
+//	chrome.serial.onReceive.addListener(onReceiveCallback);
+//};
 
 var onReceiveCallback = function(info) {
     if (info.connectionId == connectionId && info.data) {
       var str = convertArrayBufferToString(info.data);
+      console.log(str);
       if (onReadCallback != null) {
       	onReadCallback(str);
       }
     }
  };
 
+chrome.serial.onReceive.addListener(onReceiveCallback);
 
- var writeSerial=function(str) {
+var onSend = function(sendInfo) {
+  console.log(sendInfo);
+}
+
+var writeSerial = function(str) {
   chrome.serial.send(connectionId, convertStringToArrayBuffer(str), onSend);
 }
+// Convert ArrayBuffer to string
+var convertArrayBufferToString = function (buf) {
+    return String.fromCharCode.apply(null, new Uint8Array(buf));
+}
 // Convert string to ArrayBuffer
-var convertStringToArrayBuffer=function(str) {
+var convertStringToArrayBuffer = function(str) {
   var buf=new ArrayBuffer(str.length);
   var bufView=new Uint8Array(buf);
   for (var i=0; i<str.length; i++) {
