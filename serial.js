@@ -13,7 +13,7 @@ var onGotDevices = function(ports) {
   }	
 };
 
-var connect = function(port) {
+var connect = function(path) {
 	var options = {bitrate: 9600};
 	chrome.serial.connect(path, options, onConnect)
 };
