@@ -1,3 +1,5 @@
+THIS APP IS INCOMPLETE AND NON-FUNCTIONAL - IT IS HERE FOR REFERENCE
+
 Serial with a Chrome App
 
 One alternative to using accessing Serial through a local server is to create a Chrome App instead.  Chrome Apps are applications that use Chrome as the application environment and are cross-platform. They can be developed using JavaScript, HTML, and CSS just like a normal webpage but they have increased capabilities to access local hardware.  Finally, it might be obvious but Chrome Apps need be run with Chrome; you can't use them with Safari, IE, Firefox, or any other browser.
